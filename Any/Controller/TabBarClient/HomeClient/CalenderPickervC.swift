@@ -29,7 +29,8 @@ class CalenderPickervC: UIViewController {
 //        // Optionally, you can add a target to respond to date changes
 //        date.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
         
-        date.minimumDate = Date()
+        self.date.minimumDate = Date()
+        self.dateformate = Utility.getCurrentShortDateNew()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +47,7 @@ class CalenderPickervC: UIViewController {
     @IBAction func btnOk(_ sender: UIButton) {
         if self.dateformate == "" {
             self.alert(alertmessage: "Please select the date!")
-        }else{
+        } else {
             self.cloOk?(self.dateformate)
             self.dismiss(animated: true)
         }

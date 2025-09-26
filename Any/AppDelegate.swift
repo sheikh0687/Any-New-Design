@@ -49,7 +49,7 @@ class AppDelegate: UIResponder,  UIApplicationDelegate, MessagingDelegate {
         UNUserNotificationCenter.current().delegate = self
         
         self.configureNotification()
-//        VersionManager.shared.checkAppVersion()
+        VersionManager.shared.checkAppVersion()
         
         if USER_DEFAULT.value(forKey: STATUS) != nil {
             Switcher.updateRootVC()

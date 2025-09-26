@@ -12,10 +12,12 @@ class UpcomingShiftCell: UITableViewCell {
 
     @IBOutlet weak var lbl_Date: UILabel!
     @IBOutlet weak var ShiftTableVw: UITableView!
+    @IBOutlet weak var shiftTableHeight: NSLayoutConstraint!
     
     var arrayShift:[JSON] = []
     var strDate:String = ""
     var navigationController: UINavigationController?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -77,7 +79,7 @@ extension UpcomingShiftCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 190
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

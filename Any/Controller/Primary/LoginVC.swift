@@ -297,6 +297,7 @@ extension LoginVC {
             DispatchQueue.main.async {
                 let swiftyJsonVar = JSON(responseData)
                 if(swiftyJsonVar["status"] == "1") {
+                    print(swiftyJsonVar)
                     USER_DEFAULT.set(swiftyJsonVar["result"]["id"].stringValue, forKey: USERID)
                     USER_DEFAULT.set(swiftyJsonVar["status"].stringValue, forKey: STATUS)
                     USER_DEFAULT.set(swiftyJsonVar["result"]["type"].stringValue, forKey: USER_TYPE)
@@ -389,7 +390,7 @@ extension LoginVC {
         paramSignupDict["country_name"] = self.strCountryName as AnyObject
         paramSignupDict["country_id"] = self.strCountryiD as AnyObject
         
-        print(paramSignupDict)
+//        print(paramSignupDict)
     }
 }
 

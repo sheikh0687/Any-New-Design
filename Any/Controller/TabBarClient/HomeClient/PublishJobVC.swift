@@ -23,6 +23,7 @@ class PublishJobVC: UIViewController {
     @IBOutlet weak var worker_TableVw: UITableView!
     @IBOutlet weak var worker_TableHeight: NSLayoutConstraint!
     @IBOutlet weak var collectionDate: UICollectionView!
+    @IBOutlet weak var timeSlot_HeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var dateSelectionVw: UIStackView!
     @IBOutlet weak var txt_WorkerNote: UITextView!
@@ -52,6 +53,7 @@ class PublishJobVC: UIViewController {
     var arrayWorkerStartTime: [String] = []
     var arrayWorkerEndTime: [String] = []
     var arraySingleDate:[String] = []
+    var arrayOfDays: [String] = []
     
     var isFrom:String = ""
     
@@ -121,8 +123,6 @@ class PublishJobVC: UIViewController {
             }
             
             self.workerShiftVw.isHidden = (workerCount <= 1)
-            
-            
             self.worker_TableHeight.constant = CGFloat(self.arrayWorkerTime.count * 85)
             self.worker_TableVw.reloadData()
         }
@@ -194,9 +194,17 @@ class PublishJobVC: UIViewController {
                 self.strSingleDate = "dd"
                 self.collectionDate.isHidden = false
                 self.arraySingleDate.append(selectedDate)
+                print(selectedDate)
                 if let dayName = Utility.getDayNameAccordingToDate(from: selectedDate) {
-                    self.strDaysName = dayName
+                    self.arrayOfDays.append(dayName)
+                    self.strDaysName = arrayOfDays.joined(separator: ",")
+                    print(self.strDaysName)
                 }
+                strApplyForAllWorker = "Yes"
+//                let numberOfItemsInRow = 2 // You can adjust this based on your layout
+//                let numberOfRows = (arraySingleDate.count + numberOfItemsInRow - 1) / numberOfItemsInRow
+//                let cellHeight: CGFloat = 50
+//                self.timeSlot_HeightConstraint.constant = CGFloat(numberOfRows) * cellHeight
                 self.collectionDate.reloadData()
             }
             self.present(vC, animated: true)
@@ -472,7 +480,6 @@ extension PublishJobVC: UITableViewDataSource, UITableViewDelegate {
                 print(self.arrayEndTime)
             }
         }
-        
         return cell
     }
     
@@ -493,6 +500,12 @@ extension PublishJobVC: UICollectionViewDataSource, UICollectionViewDelegateFlow
         cell.lbl_Date.text = self.arraySingleDate[indexPath.row]
         cell.cloCancel = {
             self.arraySingleDate.remove(at: indexPath.row)
+            self.arrayOfDays.remove(at: indexPath.row)
+//            let numberOfItemsInRow = 2
+//            let numberOfRows = (self.arraySingleDate.count + numberOfItemsInRow - 1) / numberOfItemsInRow
+//            let cellHeight: CGFloat = 50
+//            self.timeSlot_HeightConstraint.constant = CGFloat(numberOfRows) * cellHeight
+
             self.collectionDate.reloadData()
         }
         return cell
@@ -520,7 +533,6 @@ extension PublishJobVC {
         paramJobPostDict["meals"]     =  strMeal  as AnyObject
         paramJobPostDict["note"]  =   self.txt_WorkerNote.text! as AnyObject
         paramJobPostDict["single_date"] = arraySingleDate.joined(separator: ",") as AnyObject
-        paramJobPostDict["break_time"] = strBreakTime as AnyObject
         
         paramJobPostDict["apply_time_same_for_allworkers"] = strApplyForAllWorker as AnyObject
         paramJobPostDict["multi_work_start_time"] = self.arrayStartTime.joined(separator: ",") as AnyObject

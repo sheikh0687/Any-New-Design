@@ -228,39 +228,7 @@ extension ClientJobVC {
                 
                 let swiftyJsonVar = JSON(responseData)
                 if(swiftyJsonVar["status"].stringValue == "1") {
-                    
-                    //                    let notificationData: [String: NSNumber] = [
-                    //                        "chatCount": swiftyJsonVar["chat_count"].numberValue,
-                    //                        "requestCount": swiftyJsonVar["request"].numberValue
-                    //                    ]
-                    //
-                    //                    NotificationCenter.default.post(name: NSNotification.Name("badgeCount"), object: "On Ride", userInfo: notificationData)
-                    //
-                    //                    if swiftyJsonVar["request"].numberValue != 0 {
-                    //                        if let items = self.tabBarController?.tabBar.items as NSArray? {
-                    //                            let tabItem = items.object(at: 3) as! UITabBarItem
-                    //                            tabItem.badgeValue = "\(swiftyJsonVar["request"].numberValue)"
-                    //                        }
-                    //                        self.lbl_WeeklyReqCount.isHidden = false
-                    //                        self.lbl_WeeklyReqCount.clipsToBounds = true
-                    //                        self.lbl_WeeklyReqCount.cornerRadius1 = 10
-                    //                        self.lbl_WeeklyReqCount.text = "\(swiftyJsonVar["request"].numberValue)"
-                    //
-                    //                        self.lbl_DailyReqCount.isHidden = false
-                    //                        self.lbl_DailyReqCount.clipsToBounds = true
-                    //                        self.lbl_DailyReqCount.cornerRadius1 = 10
-                    //                        self.lbl_DailyReqCount.text = "\(swiftyJsonVar["request"].numberValue)"
-                    //
-                    //                    } else {
-                    //                        if let items = self.tabBarController?.tabBar.items as NSArray? {
-                    //                            let tabItem = items.object(at: 3) as! UITabBarItem
-                    //                            tabItem.badgeValue = nil
-                    //                            print("All Count")
-                    //                        }
-                    //                        self.lbl_WeeklyReqCount.isHidden = true
-                    //                        self.lbl_DailyReqCount.isHidden = true
-                    //                    }
-                    
+                                        
                     let notificationData: [String: NSNumber] = [
                         "chatCount": swiftyJsonVar["chat_count"].numberValue,
                         "requestCount": swiftyJsonVar["request"].numberValue
@@ -421,10 +389,10 @@ extension ClientJobVC {
         {
             if val["shift_details"].count > 0 {
                 let rowCount = val["shift_details"].count
-                let rowHeight = 40 + (rowCount * 200)
+                let rowHeight = 60 + (rowCount * 190)
                 tableHeight = tableHeight + rowHeight
             } else {
-                tableHeight = tableHeight + 40
+                tableHeight = tableHeight + 60
             }
         }
         return CGFloat(tableHeight)
@@ -500,6 +468,7 @@ extension ClientJobVC: UITableViewDataSource, UITableViewDelegate {
             cell.lbl_Date.cornerRadius1 = 10
             cell.navigationController = self.navigationController
             cell.arrayShift = obj["shift_details"].arrayValue
+            cell.shiftTableHeight.constant = CGFloat(obj["shift_details"].count * 190)
             cell.ShiftTableVw.reloadData()
             return cell
         }
@@ -515,7 +484,8 @@ extension ClientJobVC: UITableViewDataSource, UITableViewDelegate {
         } else {
             if self.arrayForUpcomingShift[indexPath.row]["shift_details"].count > 0 {
                 let rowCount = self.arrayForUpcomingShift[indexPath.row]["shift_details"].count
-                let rowHeight = 40 + (rowCount * 200)
+                let rowHeight = 60 + (rowCount * 190)
+                print(rowHeight)
                 return CGFloat(rowHeight)
             } else {
                 return 0
