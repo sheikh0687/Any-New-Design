@@ -26,6 +26,7 @@ class BookingCellWorker:UITableViewCell {
     @IBOutlet weak var lbl_Experience: UILabel!
     @IBOutlet weak var lbl_Review: UILabel!
     @IBOutlet weak var lbl_Certificate: UILabel!
+    @IBOutlet weak var btn_SeeReview: UIButton!
     
     @IBOutlet weak var imgCertificate: UIImageView!
 }
@@ -68,6 +69,8 @@ class HomeVC: UIViewController {
         customInfoWindow.frame = CGRect(x: 0, y: topbarHeight1, width: UIScreen.main.bounds.width , height: 55)
         customInfoWindow.btn_Chat.addTarget(self, action: #selector(goChat), for: .touchUpInside)
         customInfoWindow.btn_Notification.addTarget(self, action: #selector(GoNotificatio), for: .touchUpInside)
+        customInfoWindow.btn_SeeAll.addTarget(self, action: #selector(GoReview), for: .touchUpInside)
+        
         customInfoWindow.lbl_AttendanceRate.text = self.strAttendance
         customInfoWindow.lbl_Review.text = "\(self.strReview) ( \(self.strRatingCount) Reviews )"
         customInfoWindow.menu_Vw.isHidden = true
@@ -91,6 +94,15 @@ class HomeVC: UIViewController {
     @objc func GoNotificatio() {
         if Utility.isUserLogin() {
             let objVC = kStoryboardMain.instantiateViewController(withIdentifier: "NotificationVC") as! NotificationVC
+            self.navigationController?.pushViewController(objVC, animated: true)
+        } else {
+            self.alert(alertmessage: "Please create an account to use this feature.")
+        }
+    }
+    
+    @objc func GoReview() {
+        if Utility.isUserLogin() {
+            let objVC = kStoryboardMain.instantiateViewController(withIdentifier: "UserRatingVC") as! UserRatingVC
             self.navigationController?.pushViewController(objVC, animated: true)
         } else {
             self.alert(alertmessage: "Please create an account to use this feature.")

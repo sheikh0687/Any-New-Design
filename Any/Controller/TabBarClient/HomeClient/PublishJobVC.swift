@@ -25,7 +25,7 @@ class PublishJobVC: UIViewController {
     @IBOutlet weak var collectionDate: UICollectionView!
     @IBOutlet weak var timeSlot_HeightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var dateSelectionVw: UIStackView!
+    @IBOutlet weak var dateSelectionVw: UIView!
     @IBOutlet weak var txt_WorkerNote: UITextView!
     
     var strJobTypeName:String = ""
@@ -158,6 +158,7 @@ class PublishJobVC: UIViewController {
                     self.strDaysName = Utility.getCurrentDay()
                 }
                 self.dateSelectionVw.isHidden = false
+                self.timeSlot_HeightConstraint.constant = 0
             }
             self.navigationController?.pushViewController(vC, animated: true)
         }
@@ -178,14 +179,6 @@ class PublishJobVC: UIViewController {
             self.navigationController?.pushViewController(vC, animated: true)
             
         } else if self.lbl_SelectSchedule.text == "Specific Date" {
-            //            datePickerTapped(strFormat: "yyyy-MM-dd", mode: .date, type: "Date") { date in
-            //                self.lbl_SelectDay.text = date
-            //                self.strSingleDate = date
-            //
-            //                if let dayName = Utility.getDayNameAccordingToDate(from: date) {
-            //                    self.strDaysName = dayName
-            //                }
-            //            }
             let vC = R.storyboard.main().instantiateViewController(withIdentifier: "CalenderPickervC") as! CalenderPickervC
             vC.modalTransitionStyle = .crossDissolve
             vC.modalPresentationStyle = .overFullScreen
@@ -200,11 +193,11 @@ class PublishJobVC: UIViewController {
                     self.strDaysName = arrayOfDays.joined(separator: ",")
                     print(self.strDaysName)
                 }
-                strApplyForAllWorker = "Yes"
-//                let numberOfItemsInRow = 2 // You can adjust this based on your layout
-//                let numberOfRows = (arraySingleDate.count + numberOfItemsInRow - 1) / numberOfItemsInRow
-//                let cellHeight: CGFloat = 50
-//                self.timeSlot_HeightConstraint.constant = CGFloat(numberOfRows) * cellHeight
+                let numberOfItemsInRow = 2 // You can adjust this based on your layout
+                let numberOfRows = (arraySingleDate.count + numberOfItemsInRow - 1) / numberOfItemsInRow
+                let cellHeight: CGFloat = 50
+                self.timeSlot_HeightConstraint.constant = CGFloat(numberOfRows) * cellHeight
+                print(self.timeSlot_HeightConstraint.constant)
                 self.collectionDate.reloadData()
             }
             self.present(vC, animated: true)
@@ -498,21 +491,21 @@ extension PublishJobVC: UICollectionViewDataSource, UICollectionViewDelegateFlow
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MultiDateCell", for: indexPath) as! MultiDateCell
         cell.lbl_Date.text = self.arraySingleDate[indexPath.row]
+        
         cell.cloCancel = {
             self.arraySingleDate.remove(at: indexPath.row)
             self.arrayOfDays.remove(at: indexPath.row)
-//            let numberOfItemsInRow = 2
-//            let numberOfRows = (self.arraySingleDate.count + numberOfItemsInRow - 1) / numberOfItemsInRow
-//            let cellHeight: CGFloat = 50
-//            self.timeSlot_HeightConstraint.constant = CGFloat(numberOfRows) * cellHeight
-
+            let numberOfItemsInRow = 2
+            let numberOfRows = (self.arraySingleDate.count + numberOfItemsInRow - 1) / numberOfItemsInRow
+            let cellHeight: CGFloat = 50
+            self.timeSlot_HeightConstraint.constant = CGFloat(numberOfRows) * cellHeight
             self.collectionDate.reloadData()
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.collectionDate.frame.width/2, height: self.collectionDate.frame.height)
+        return CGSize(width: self.collectionDate.frame.width/2, height: 50)
     }
 }
 

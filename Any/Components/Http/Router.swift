@@ -100,6 +100,8 @@ enum Router: String {
     case get_fav_client_list
     case worker_update_document
     
+    case set_shift_autoapproval_status
+    
     public func url() -> String {
         switch self {
         case .logIn:
@@ -288,6 +290,9 @@ enum Router: String {
             return Router.oAuthRoute(path: "get_fav_client_list?")
         case .worker_update_document:
             return Router.oAuthRoute(path: "worker_update_document?")
+            
+        case .set_shift_autoapproval_status:
+            return Router.oAuthRoute(path: "set_shift_autoapproval_status?")
         }
     }
         

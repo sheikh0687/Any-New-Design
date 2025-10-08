@@ -160,6 +160,9 @@
 		CF0B0CDD2D71887400A8C604 /* CountryPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B0CDC2D71887400A8C604 /* CountryPickerVC.swift */; };
 		CF119EC42CAD83450009F114 /* BookingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF119EC22CAD83450009F114 /* BookingCell.swift */; };
 		CF119EC52CAD83450009F114 /* BookingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF119EC32CAD83450009F114 /* BookingCell.xib */; };
+		CF1FB3D92E9690260096F91B /* UserRatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1FB3D82E9690260096F91B /* UserRatingVC.swift */; };
+		CF1FB3DD2E9691870096F91B /* UserRatingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1FB3DC2E9691870096F91B /* UserRatingCell.xib */; };
+		CF1FB3DE2E9691870096F91B /* UserRatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1FB3DB2E9691870096F91B /* UserRatingCell.swift */; };
 		CF2FB3BD2E8508C900C17410 /* PopNRIC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2FB3BC2E8508C900C17410 /* PopNRIC.swift */; };
 		CF45623F2E8164D00024743C /* UpcomingShiftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45623D2E8164D00024743C /* UpcomingShiftCell.swift */; };
 		CF4562402E8164D00024743C /* UpcomingShiftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF45623E2E8164D00024743C /* UpcomingShiftCell.xib */; };
@@ -394,6 +397,9 @@
 		CF0B0CDC2D71887400A8C604 /* CountryPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerVC.swift; sourceTree = "<group>"; };
 		CF119EC22CAD83450009F114 /* BookingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCell.swift; sourceTree = "<group>"; };
 		CF119EC32CAD83450009F114 /* BookingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingCell.xib; sourceTree = "<group>"; };
+		CF1FB3D82E9690260096F91B /* UserRatingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRatingVC.swift; sourceTree = "<group>"; };
+		CF1FB3DB2E9691870096F91B /* UserRatingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRatingCell.swift; sourceTree = "<group>"; };
+		CF1FB3DC2E9691870096F91B /* UserRatingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserRatingCell.xib; sourceTree = "<group>"; };
 		CF2FB3BC2E8508C900C17410 /* PopNRIC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopNRIC.swift; sourceTree = "<group>"; };
 		CF45623D2E8164D00024743C /* UpcomingShiftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingShiftCell.swift; sourceTree = "<group>"; };
 		CF45623E2E8164D00024743C /* UpcomingShiftCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingShiftCell.xib; sourceTree = "<group>"; };
@@ -522,6 +528,7 @@
 				044036372A2B77580094ED62 /* SetRateVC.swift */,
 				04DDB9892A16536200AD4FB5 /* EditProfileVC.swift */,
 				CFC4B9832D34F88800452D80 /* SetCustomDateRateVC.swift */,
+				CF1FB3D82E9690260096F91B /* UserRatingVC.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -926,6 +933,15 @@
 			path = WorkerBooking;
 			sourceTree = "<group>";
 		};
+		CF1FB3DA2E96916D0096F91B /* User Rating */ = {
+			isa = PBXGroup;
+			children = (
+				CF1FB3DB2E9691870096F91B /* UserRatingCell.swift */,
+				CF1FB3DC2E9691870096F91B /* UserRatingCell.xib */,
+			);
+			path = "User Rating";
+			sourceTree = "<group>";
+		};
 		CF45623C2E8164AD0024743C /* UpcomingShift */ = {
 			isa = PBXGroup;
 			children = (
@@ -1009,6 +1025,7 @@
 		CFA59F252B80B93B00CCCE9F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CF1FB3DA2E96916D0096F91B /* User Rating */,
 				CF88BAF02E82A52B0067BBB3 /* Multiple Date */,
 				CF45623C2E8164AD0024743C /* UpcomingShift */,
 				CFA654DD2D3BB78500A7E86B /* WorkerShiftTime */,
@@ -1244,6 +1261,7 @@
 				CF88BAF32E82A5500067BBB3 /* MultiDateCell.xib in Resources */,
 				047B22DA2A0BC1D700AC3DA7 /* Roboto-BoldItalic.ttf in Resources */,
 				047B22DF2A0BC1D700AC3DA7 /* Roboto-Thin.ttf in Resources */,
+				CF1FB3DD2E9691870096F91B /* UserRatingCell.xib in Resources */,
 				047B22DB2A0BC1D700AC3DA7 /* Roboto-LightItalic.ttf in Resources */,
 				047B22D52A0BC1D700AC3DA7 /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				047B22D82A0BC1D700AC3DA7 /* Roboto-ThinItalic.ttf in Resources */,
@@ -1397,6 +1415,7 @@
 				047B22892A0BC1D600AC3DA7 /* PagingIndicatorView.swift in Sources */,
 				047B228B2A0BC1D600AC3DA7 /* PagingCellLayoutAttributes.swift in Sources */,
 				047B22AE2A0BC1D700AC3DA7 /* PagingItems.swift in Sources */,
+				CF1FB3DE2E9691870096F91B /* UserRatingCell.swift in Sources */,
 				CFDBE7A02CBFA8420011D338 /* RegistrationSuccessVC.swift in Sources */,
 				047B22B02A0BC1D700AC3DA7 /* AnyPagingItem.swift in Sources */,
 				047B22E72A0BC1D700AC3DA7 /* DatePickerDialog.swift in Sources */,
@@ -1473,6 +1492,7 @@
 				047B22A72A0BC1D700AC3DA7 /* PagingMenuItemSource.swift in Sources */,
 				047B22B92A0BC1D700AC3DA7 /* PageViewControllerDataSource.swift in Sources */,
 				047B22C12A0BC1D700AC3DA7 /* PagingMenuDelegate.swift in Sources */,
+				CF1FB3D92E9690260096F91B /* UserRatingVC.swift in Sources */,
 				0472DE602A179459004DD420 /* WalletVC.swift in Sources */,
 				047B22AA2A0BC1D700AC3DA7 /* UIEdgeInsets.swift in Sources */,
 				0407EB672A2A549300BFE9DE /* listAdminVC.swift in Sources */,

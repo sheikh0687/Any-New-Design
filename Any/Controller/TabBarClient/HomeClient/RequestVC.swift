@@ -342,6 +342,7 @@ extension RequestVC : UITableViewDataSource {
         } else {
             cell.imgCertificate.image = R.image.placeholder()
         }
+    
         
         // Handle status
         if strStatus == "Accept" {
@@ -382,6 +383,8 @@ extension RequestVC : UITableViewDataSource {
         cell.btn_Reject.tag = indexPath.row
         cell.btn_Reject.addTarget(self, action: #selector(clcidReject), for: .touchUpInside)
         
+        cell.btn_SeeReview.tag = indexPath.row
+        cell.btn_SeeReview.addTarget(self, action: #selector(clickReview), for: .touchUpInside)
         return cell
     }
     
@@ -389,6 +392,11 @@ extension RequestVC : UITableViewDataSource {
         let dic = arr_AllDriver[but.tag]
         dicCrent = dic
         WebRejectBooking(strCard: dic["id"].stringValue)
+    }
+    
+    @objc func clickReview(but: UIButton) {
+        let vC = R.storyboard.main().instantiateViewController(withIdentifier: "UserRatingVC") as! UserRatingVC
+        self.navigationController?.pushViewController(vC, animated: true)
     }
     
     @objc func clciBook(but: UIButton) {

@@ -13,6 +13,7 @@ import DropDown
 class CurrentShiftVC: UIViewController {
 
     @IBOutlet weak var btn_Switch: UISwitch!
+    @IBOutlet weak var btn_SwicthAutoApprove: UISwitch!
     @IBOutlet weak var table_list: UITableView!
     
     var arr_List:[JSON] = []
@@ -52,6 +53,14 @@ class CurrentShiftVC: UIViewController {
         }
     }
     
+    @IBAction func switchAutoApproval(_ sender: Any) {
+        if kappDelegate.dicProdile["shift_autoapproval"].stringValue == "No" {
+            getShiftAutoApproval(strType: "Yes")
+        } else {
+            getShiftAutoApproval(strType: "No")
+        }
+    }
+    
     @IBAction func admin(_ sender: Any) {
         let objVC = kStoryboardMain.instantiateViewController(withIdentifier: "listAdminVC") as! listAdminVC
         objVC.strType = "OutletAdmin"
@@ -62,7 +71,6 @@ class CurrentShiftVC: UIViewController {
         let objVC = kStoryboardMain.instantiateViewController(withIdentifier: "listAdminVC") as! listAdminVC
         objVC.strType = "AuthrisedApprover"
         self.navigationController?.pushViewController(objVC, animated: true)
-
     }
     
     func GetProfile() {
@@ -85,6 +93,12 @@ class CurrentShiftVC: UIViewController {
                     } else {
                         btn_Switch.setOn(false, animated: true)
                     }
+                    
+                    if kappDelegate.dicProdile["shift_autoapproval"].stringValue == "No" {
+                        btn_SwicthAutoApprove.setOn(false, animated: true)
+                    } else {
+                        btn_SwicthAutoApprove.setOn(true, animated: true)
+                    }
                 }
             }
             
@@ -106,9 +120,7 @@ class CurrentShiftVC: UIViewController {
                 let swiftyJsonVar = JSON(responseData)
                 print(swiftyJsonVar)
                 if(swiftyJsonVar["status"].stringValue == "1") {
-
-                } else {
-
+                    self.GetProfile()
                 }
                 self.hideProgressBar()
             }
@@ -116,9 +128,30 @@ class CurrentShiftVC: UIViewController {
             Utility.showAlertMessage(withTitle: EMPTY_STRING, message: (error.localizedDescription), delegate: nil,parentViewController: self)
             self.hideProgressBar()
         })
-        
     }
+    
+    func getShiftAutoApproval(strType:String) {
+        
+        showProgressBar()
+        var paramDict : [String:AnyObject] = [:]
+        paramDict["user_id"]  =   USER_DEFAULT.value(forKey: USERID) as AnyObject
+        paramDict["shift_autoapproval"]  =   strType as AnyObject
 
+        CommunicationManeger.callPostService(apiUrl: Router.set_shift_autoapproval_status.url(), parameters: paramDict, parentViewController: self, successBlock: { (responseData, message) in
+            DispatchQueue.main.async {
+                let swiftyJsonVar = JSON(responseData)
+                print(swiftyJsonVar)
+                if(swiftyJsonVar["status"].stringValue == "1") {
+                    self.GetProfile()
+                }
+                self.hideProgressBar()
+            }
+        }, failureBlock: { (error : Error) in
+            Utility.showAlertMessage(withTitle: EMPTY_STRING, message: (error.localizedDescription), delegate: nil,parentViewController: self)
+            self.hideProgressBar()
+        })
+    }
+    
     func getDataGetList() {
         
         showProgressBar()

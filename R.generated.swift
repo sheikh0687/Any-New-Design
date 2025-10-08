@@ -3649,7 +3649,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 18 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 19 nibs.
   struct nib {
     /// Nib `AllJobTypeCell`.
     static let allJobTypeCell = _R.nib._AllJobTypeCell()
@@ -3683,6 +3683,8 @@ struct R: Rswift.Validatable {
     static let topBar = _R.nib._TopBar()
     /// Nib `UpcomingShiftCell`.
     static let upcomingShiftCell = _R.nib._UpcomingShiftCell()
+    /// Nib `UserRatingCell`.
+    static let userRatingCell = _R.nib._UserRatingCell()
     /// Nib `WeeklyRateCell`.
     static let weeklyRateCell = _R.nib._WeeklyRateCell()
     /// Nib `WorkerShiftTimeCell`.
@@ -3817,6 +3819,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "UserRatingCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.userRatingCell) instead")
+    static func userRatingCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.userRatingCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "WeeklyRateCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.weeklyRateCell) instead")
     static func weeklyRateCell(_: Void = ()) -> UIKit.UINib {
@@ -3896,6 +3906,10 @@ struct R: Rswift.Validatable {
       return R.nib.upcomingShiftCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UpcomingShiftCell
     }
 
+    static func userRatingCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UserRatingCell? {
+      return R.nib.userRatingCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UserRatingCell
+    }
+
     static func weeklyRateCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WeeklyRateCell? {
       return R.nib.weeklyRateCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WeeklyRateCell
     }
@@ -3907,7 +3921,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 16 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 17 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AllJobTypeCell`.
     static let allJobTypeCell: Rswift.ReuseIdentifier<AllJobTypeCell> = Rswift.ReuseIdentifier(identifier: "AllJobTypeCell")
@@ -3939,6 +3953,8 @@ struct R: Rswift.Validatable {
     static let saveCardCell: Rswift.ReuseIdentifier<SaveCardCell> = Rswift.ReuseIdentifier(identifier: "SaveCardCell")
     /// Reuse identifier `ShiftCell`.
     static let shiftCell: Rswift.ReuseIdentifier<ShiftCell> = Rswift.ReuseIdentifier(identifier: "ShiftCell")
+    /// Reuse identifier `UserRatingCell`.
+    static let userRatingCell: Rswift.ReuseIdentifier<UserRatingCell> = Rswift.ReuseIdentifier(identifier: "UserRatingCell")
     /// Reuse identifier `WorkerShiftTimeCell`.
     static let workerShiftTimeCell: Rswift.ReuseIdentifier<WorkerShiftTimeCell> = Rswift.ReuseIdentifier(identifier: "WorkerShiftTimeCell")
 
@@ -3981,6 +3997,7 @@ struct _R: Rswift.Validatable {
       try _PreviousWorkerCell.validate()
       try _SubShiftCell.validate()
       try _TopBar.validate()
+      try _UserRatingCell.validate()
       try _WeeklyRateCell.validate()
     }
 
@@ -4291,6 +4308,28 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
+    struct _UserRatingCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = UserRatingCell
+
+      let bundle = R.hostingBundle
+      let identifier = "UserRatingCell"
+      let name = "UserRatingCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UserRatingCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UserRatingCell
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "wine-connection-suntec-city 2", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'wine-connection-suntec-city 2' is used in nib 'UserRatingCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "GREEN", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'GREEN' is used in nib 'UserRatingCell', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "LIGHTGRAY", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'LIGHTGRAY' is used in nib 'UserRatingCell', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
     struct _WeeklyRateCell: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "WeeklyRateCell"
@@ -4361,7 +4400,7 @@ struct _R: Rswift.Validatable {
 
     #if os(iOS) || os(tvOS)
     struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = UIKit.UINavigationController
+      typealias InitialController = UserRatingVC
 
       let addAdminVC = StoryboardViewControllerResource<AddAdminVC>(identifier: "AddAdminVC")
       let bookingCompleteDetailVC = StoryboardViewControllerResource<BookingCompleteDetailVC>(identifier: "BookingCompleteDetailVC")
@@ -4419,6 +4458,7 @@ struct _R: Rswift.Validatable {
       let updateJobPublishVC = StoryboardViewControllerResource<UpdateJobPublishVC>(identifier: "UpdateJobPublishVC")
       let urgentBookingVC = StoryboardViewControllerResource<UrgentBookingVC>(identifier: "UrgentBookingVC")
       let userChat = StoryboardViewControllerResource<UserChat>(identifier: "UserChat")
+      let userRatingVC = StoryboardViewControllerResource<UserRatingVC>(identifier: "UserRatingVC")
       let userTabBar = StoryboardViewControllerResource<UserTabBar>(identifier: "UserTabBar")
       let walletTypeVC = StoryboardViewControllerResource<WalletTypeVC>(identifier: "WalletTypeVC")
       let walletVC = StoryboardViewControllerResource<WalletVC>(identifier: "WalletVC")
@@ -4641,6 +4681,10 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: userChat)
       }
 
+      func userRatingVC(_: Void = ()) -> UserRatingVC? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: userRatingVC)
+      }
+
       func userTabBar(_: Void = ()) -> UserTabBar? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: userTabBar)
       }
@@ -4792,6 +4836,7 @@ struct _R: Rswift.Validatable {
         if _R.storyboard.main().updateJobPublishVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'updateJobPublishVC' could not be loaded from storyboard 'Main' as 'UpdateJobPublishVC'.") }
         if _R.storyboard.main().urgentBookingVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'urgentBookingVC' could not be loaded from storyboard 'Main' as 'UrgentBookingVC'.") }
         if _R.storyboard.main().userChat() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'userChat' could not be loaded from storyboard 'Main' as 'UserChat'.") }
+        if _R.storyboard.main().userRatingVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'userRatingVC' could not be loaded from storyboard 'Main' as 'UserRatingVC'.") }
         if _R.storyboard.main().userTabBar() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'userTabBar' could not be loaded from storyboard 'Main' as 'UserTabBar'.") }
         if _R.storyboard.main().walletTypeVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'walletTypeVC' could not be loaded from storyboard 'Main' as 'WalletTypeVC'.") }
         if _R.storyboard.main().walletVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'walletVC' could not be loaded from storyboard 'Main' as 'WalletVC'.") }

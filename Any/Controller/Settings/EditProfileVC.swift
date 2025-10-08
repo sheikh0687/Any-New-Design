@@ -94,9 +94,9 @@ class EditProfileVC: UIViewController  {
                 text_First.text = kappDelegate.dic_Profile["first_name"].stringValue
                 text_Last.text = kappDelegate.dic_Profile["last_name"].stringValue
                 text_Mobile.text = kappDelegate.dic_Profile["mobile"].stringValue
-                //            let CountryCode = Utility.getOnlyCountryCode(from: kappDelegate.dic_Profile["mobile_with_code"].stringValue)
-                //            print(CountryCode!)
-                //            btn_Cou.setTitle("+\(CountryCode!)", for: .normal)
+                txt_PayNowNumber.text = kappDelegate.dic_Profile["pay_now_number"].stringValue
+                txt_BankName.text = kappDelegate.dic_Profile["bank_name"].stringValue
+                txt_BankNumber.text = kappDelegate.dic_Profile["local_bank_number"].stringValue
                 
                 text_Mail.text = kappDelegate.dic_Profile["email"].stringValue
                 strJobId = kappDelegate.dic_Profile["job_type_id"].stringValue
@@ -175,13 +175,6 @@ class EditProfileVC: UIViewController  {
         } else {
             self.alert(alertmessage: "Please create an account to use this feature.")
         }
-        
-        //        if strType == "Client" {
-        //            CameraHandler.sharedInstance.showActionSheet(vc: self)
-        //            CameraHandler.sharedInstance.imagePickedBlock = { [self] (image) in
-        //                img_Profile.image = image
-        //            }
-        //        }
     }
     
     @IBAction func nrcImage(_ sender: Any) {

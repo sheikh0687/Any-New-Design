@@ -259,13 +259,8 @@ extension RequestByDateVC : UITableViewDataSource {
             } else {
                 cell.lbl_ClockIN.text = "Clock-In : \(dic["clock_in_time"].stringValue)"
             }
-            
-            
             cell.lbl_Address.text = shiftTime
-            
-            
         } else {
-            
             cell.btn_Chat.isHidden = true
             cell.btn_Appr.isHidden = false
             cell.btn_Reject.isHidden = false
@@ -288,17 +283,22 @@ extension RequestByDateVC : UITableViewDataSource {
         cell.btn_Reject.tag = indexPath.row
         cell.btn_Reject.addTarget(self, action: #selector(clcidReject), for: .touchUpInside)
         
+        cell.btn_SeeReview.tag = indexPath.row
+        cell.btn_SeeReview.addTarget(self, action: #selector(clickReview), for: .touchUpInside)
+        
         return cell
-        
-        //      "email" : "jenny.choo@scotts35a.com",
-        //  "email" : "westcoastgm@wineconnection.com",
-        
     }
     
     @objc func clcidReject(but:UIButton)  {
         let dic = arr_AllDriver[but.tag]
         WebRejectBooking(strCard: dic["id"].stringValue)
     }
+    
+    @objc func clickReview(but: UIButton) {
+        let vC = R.storyboard.main().instantiateViewController(withIdentifier: "UserRatingVC") as! UserRatingVC
+        self.navigationController?.pushViewController(vC, animated: true)
+    }
+    
     @objc func clciBook(but:UIButton)  {
         
         let dic = arr_AllDriver[but.tag]

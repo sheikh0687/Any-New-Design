@@ -138,7 +138,7 @@ class UserChat: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
         
         paramDict["receiver_id"]   =  receiverId as AnyObject
         paramDict["sender_id"]    =   userId as AnyObject
-        paramDict["chat_message"]  =  tvMsg.text! as AnyObject
+        paramDict["chat_message"]  =  tvMsg.text?.trimmingCharacters(in: .whitespacesAndNewlines) as AnyObject
         paramDict["timezone"]  =  localTimeZoneIdentifier as AnyObject
         paramDict["type"]  =   "Normal" as AnyObject
         paramDict["request_id"]  =   strReasonID as AnyObject

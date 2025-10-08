@@ -698,6 +698,7 @@ extension BookingRequestVC: UITableViewDataSource, UITableViewDelegate {
             vC.strBookinName = "\(objClient["business_name"]?.stringValue ?? ""),\n\(objClient["business_address"]?.stringValue ?? "")\n\(dic["day_name"].stringValue) \(dic["start_time"].stringValue) \(dic["end_time"].stringValue)"
             vC.isFrom = "Withdraw"
             vC.isPendingBooking = shiftCartStatus
+            
             vC.cloBook = { [self] in
                 self.webDeletShift(strCartiD: dic["set_shift_cart_id"].stringValue)
                 self.dismiss(animated: true)

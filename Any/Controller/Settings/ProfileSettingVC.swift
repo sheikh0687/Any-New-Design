@@ -13,6 +13,7 @@ class ProfileSettingVC: UIViewController {
     @IBOutlet weak var businessProfile_Vw: UIStackView!
     @IBOutlet weak var userProfile_Vw: UIStackView!
     @IBOutlet weak var btn_DeleteAccountOt: UIButton!
+    @IBOutlet weak var btn_ReviewOt: UIButton!
     
     let user_Type = USER_DEFAULT.value(forKey: USER_TYPE) as? String
     
@@ -24,9 +25,11 @@ class ProfileSettingVC: UIViewController {
             if user_Type == "Client" {
                 self.businessProfile_Vw.isHidden = false
                 self.userProfile_Vw.isHidden = false
+                self.btn_ReviewOt.isHidden = true
             } else {
                 self.businessProfile_Vw.isHidden = true
                 self.userProfile_Vw.isHidden = false
+                self.btn_ReviewOt.isHidden = false
             }
         } else {
             self.businessProfile_Vw.isHidden = true
@@ -108,6 +111,12 @@ class ProfileSettingVC: UIViewController {
     {
         let vc = kStoryboardMain.instantiateViewController(withIdentifier: "SaveCardVC") as! SaveCardVC
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func btn_ReviewRating(_ sender: UIButton)
+    {
+        let vC = kStoryboardMain.instantiateViewController(withIdentifier: "UserRatingVC") as! UserRatingVC
+        self.navigationController?.pushViewController(vC, animated: true)
     }
     
     @IBAction func btn_Logout(_ sender: UIButton)
