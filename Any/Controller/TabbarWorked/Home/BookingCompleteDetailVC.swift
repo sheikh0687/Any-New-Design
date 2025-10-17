@@ -23,6 +23,7 @@ class BookingCompleteDetailVC: UIViewController {
     @IBOutlet weak var lbl_Rate: UILabel!
     @IBOutlet weak var lbl_TotalAnser: UILabel!
     @IBOutlet weak var lbl_Totall: UILabel!
+    
     var dicClinetDetail:JSON!
     var dicCartDetail:JSON!
 
@@ -35,6 +36,7 @@ class BookingCompleteDetailVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,8 +53,8 @@ class BookingCompleteDetailVC: UIViewController {
 
         lbl_Totall.text = dicCartDetail["set_shift"]["total_time"].stringValue
         lbl_TotalAnser.text = dicClinetDetail["total_working_hr_time"].stringValue
-        lbl_TotalCost.text = "\(kCurrency)\(dicClinetDetail["total_amount"].stringValue)"
-        lbl_Rate.text = "\(kCurrency)\(dicClinetDetail["shift_rate"].stringValue)"
+        lbl_TotalCost.text = "\(USER_DEFAULT.value(forKey: CURRENCY_SYMBOL) ?? "")\(dicClinetDetail["total_amount"].stringValue)"
+        lbl_Rate.text = "\(USER_DEFAULT.value(forKey: CURRENCY_SYMBOL) ?? "")\(dicClinetDetail["shift_rate"].stringValue)"
     }
     
     @IBAction func book(_ sender: Any) {

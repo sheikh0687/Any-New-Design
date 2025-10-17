@@ -382,7 +382,6 @@ extension BookingRequestVC {
                     self.present(objVC, animated: false, completion: nil)
                 } else {
                     Utility.showAlertMessage(withTitle: APPNAME, message: "Some went wrong", delegate: self, parentViewController: self)
-                    
                 }
                 self.hideProgressBar()
             }
@@ -429,7 +428,7 @@ extension BookingRequestVC {
 
         print(paramImgDict)
         
-        CommunicationManeger.uploadImagesAndData(apiUrl: Router.update_profile_worker.url(), params: (paramDict as! [String : String]) , imageParam: paramImgDict, videoParam: [:], parentViewController: self, successBlock: { (responseData, message) in
+        CommunicationManeger.uploadImagesAndData(apiUrl: Router.worker_update_document.url(), params: (paramDict as! [String : String]) , imageParam: paramImgDict, videoParam: [:], parentViewController: self, successBlock: { (responseData, message) in
             
             DispatchQueue.main.async { [self] in
                 let swiftyJsonVar = JSON(responseData)
@@ -647,7 +646,7 @@ extension BookingRequestVC: UITableViewDataSource, UITableViewDelegate {
                         vC.strInstantApproval = dic["shift_autoapproval"].stringValue
                         vC.isFrom = "Book"
                         
-                        vC.cloBook = {[self] in
+                        vC.cloBook = { [self] in
                             let shiftId = dic["id"].stringValue
                             let shiftRate = dic["shift_rate"].stringValue
                             self.webAddToCartSubmit(shiftId, shiftRate)
@@ -657,7 +656,7 @@ extension BookingRequestVC: UITableViewDataSource, UITableViewDelegate {
                         vC.modalPresentationStyle = .overFullScreen
                         self.present(vC, animated: true)
                     } else {
-                        Utility.showAlertMessage(withTitle: APPNAME, message: "Your account is not authorised to accept this job type. Please create a new account.", delegate: self, parentViewController: self)
+                        Utility.showAlertMessage(withTitle: APPNAME, message: "Please complete your profile to book.\n\n * Go to Profile, select the job type you’re applying for.\n * Some roles (Kitchen Assistant, Chef, Barista) require a one-time upload of NRIC and a valid Food Hygiene Certificate.\n\nOnce approved, you can book shifts for that job type.", delegate: self, parentViewController: self)
                     }
                 } else {
                     let vC = R.storyboard.main().instantiateViewController(withIdentifier: "PopUpBeforeBooking") as! PopUpBeforeBooking
@@ -671,7 +670,7 @@ extension BookingRequestVC: UITableViewDataSource, UITableViewDelegate {
                     vC.strInstantApproval = dic["shift_autoapproval"].stringValue
                     vC.isFrom = "Book"
                     
-                    vC.cloBook = {[self] in
+                    vC.cloBook = { [self] in
                         let shiftId = dic["id"].stringValue
                         let shiftRate = dic["shift_rate"].stringValue
                         self.webAddToCartSubmit(shiftId, shiftRate)

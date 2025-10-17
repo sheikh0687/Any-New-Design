@@ -225,6 +225,7 @@ class BookingDetailVC: UIViewController,FooTwoViewControllerDelegate {
         } else {
             arr_Break = [dicShift["shift_break_time"].stringValue]
         }
+        
         collectionViewShift.reloadData()
     }
 }
@@ -241,7 +242,11 @@ extension BookingDetailVC: UICollectionViewDataSource,UICollectionViewDelegateFl
         
         let dic = self.arr_Break[indexPath.row]
         
-        cell.lbl_Break.text = dic
+        if dicRequestDetail["shift_break_time"].stringValue != "" {
+            cell.lbl_Break.text = dic
+        } else {
+            cell.lbl_Break.text = "\(dic)\n Break Time"
+        }
         
         if dicRequestDetail["break_time"].stringValue == "30 min" && indexPath.row == 1 {
             cell.lbl_Break.backgroundColor = UIColor.init(named: THEME_COLOR_NAME)

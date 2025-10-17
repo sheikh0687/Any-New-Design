@@ -118,13 +118,32 @@ extension HistoryVC : UITableViewDataSource {
 
         }
 
+        if dic["rating_review_status"].stringValue == "Yes" {
+            cell.view_GiveRating.isHidden = true
+            cell.reviewView.isHidden = false
+            cell.cosmosVw.rating = Double(dic["rating"].stringValue) ?? 0.0
+            cell.lbl_Feedback.text = dic["review"].stringValue
+        } else {
+            cell.view_GiveRating.isHidden = false
+            cell.reviewView.isHidden = true
+        }
         
         cell.lbl_ShiftTime.text = shiftTime
         cell.lbl_Address.text = "Time-In \(dic["clock_in_time"].stringValue) / Time-Out \(dic["clock_out_time"].stringValue)\n\n\(strBr)"
 
-        
+        cell.btn_GiveRating.tag = indexPath.row
+        cell.btn_GiveRating.addTarget(self, action: #selector(giveRating), for: .touchUpInside)
+
         return cell
         
+    }
+    
+    @objc func giveRating(but: UIButton) {
+        let dic = arr_AllHistory[but.tag]
+        let vC = R.storyboard.main().instantiateViewController(withIdentifier: "AddRatingReviewVC") as! AddRatingReviewVC
+        vC.strToid = dic["user_id"].stringValue
+        vC.strRequestiD = dic["id"].stringValue
+        self.navigationController?.pushViewController(vC, animated: true)
     }
 }
 

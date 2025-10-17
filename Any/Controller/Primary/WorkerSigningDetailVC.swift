@@ -29,7 +29,7 @@ class WorkerSigningDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        WebGetJobCategory()
+//        WebGetJobCategory()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,13 +91,14 @@ class WorkerSigningDetailVC: UIViewController {
     func isValidInput() -> Bool {
         var isValid : Bool = true;
         var errorMessage : String = ""
-        if strJobTypeName.isEmpty {
-            isValid = false
-            errorMessage = "Please Select Job Type"
-        }  else if workerProfile == nil {
+        if workerProfile == nil {
             isValid = false
             errorMessage = "Please Select Profile Image"
         }
+//        if strJobTypeName.isEmpty {
+//            isValid = false
+//            errorMessage = "Please Select Job Type"
+//        }  else
         
         //        else if imageNRCDocument == nil {
         //            isValid = false

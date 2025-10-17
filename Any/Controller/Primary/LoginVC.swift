@@ -312,6 +312,7 @@ extension LoginVC {
                     USER_DEFAULT.set(swiftyJsonVar["result"]["country_id"].stringValue, forKey: COUNTRYID)
                     
                     USER_DEFAULT.set(swiftyJsonVar["result"]["currency_symbol"].stringValue, forKey: CURRENCY_SYMBOL)
+                    
                     Switcher.updateRootVC()
                 } else {
                     let message = swiftyJsonVar["message"].stringValue
@@ -390,7 +391,7 @@ extension LoginVC {
         paramSignupDict["country_name"] = self.strCountryName as AnyObject
         paramSignupDict["country_id"] = self.strCountryiD as AnyObject
         
-//        print(paramSignupDict)
+        print(paramSignupDict)
     }
 }
 

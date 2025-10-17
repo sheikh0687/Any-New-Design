@@ -4400,9 +4400,10 @@ struct _R: Rswift.Validatable {
 
     #if os(iOS) || os(tvOS)
     struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = UserRatingVC
+      typealias InitialController = UIKit.UINavigationController
 
       let addAdminVC = StoryboardViewControllerResource<AddAdminVC>(identifier: "AddAdminVC")
+      let addRatingReviewVC = StoryboardViewControllerResource<AddRatingReviewVC>(identifier: "AddRatingReviewVC")
       let bookingCompleteDetailVC = StoryboardViewControllerResource<BookingCompleteDetailVC>(identifier: "BookingCompleteDetailVC")
       let bookingDetailVC = StoryboardViewControllerResource<BookingDetailVC>(identifier: "BookingDetailVC")
       let bookingRequestVC = StoryboardViewControllerResource<BookingRequestVC>(identifier: "BookingRequestVC")
@@ -4467,6 +4468,10 @@ struct _R: Rswift.Validatable {
 
       func addAdminVC(_: Void = ()) -> AddAdminVC? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: addAdminVC)
+      }
+
+      func addRatingReviewVC(_: Void = ()) -> AddRatingReviewVC? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: addRatingReviewVC)
       }
 
       func bookingCompleteDetailVC(_: Void = ()) -> BookingCompleteDetailVC? {
@@ -4784,6 +4789,7 @@ struct _R: Rswift.Validatable {
           if UIKit.UIColor(named: "gray", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'gray' is used in storyboard 'Main', but couldn't be loaded.") }
         }
         if _R.storyboard.main().addAdminVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'addAdminVC' could not be loaded from storyboard 'Main' as 'AddAdminVC'.") }
+        if _R.storyboard.main().addRatingReviewVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'addRatingReviewVC' could not be loaded from storyboard 'Main' as 'AddRatingReviewVC'.") }
         if _R.storyboard.main().bookingCompleteDetailVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'bookingCompleteDetailVC' could not be loaded from storyboard 'Main' as 'BookingCompleteDetailVC'.") }
         if _R.storyboard.main().bookingDetailVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'bookingDetailVC' could not be loaded from storyboard 'Main' as 'BookingDetailVC'.") }
         if _R.storyboard.main().bookingRequestVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'bookingRequestVC' could not be loaded from storyboard 'Main' as 'BookingRequestVC'.") }

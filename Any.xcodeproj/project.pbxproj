@@ -191,6 +191,7 @@
 		CFA654E02D3BB7A700A7E86B /* WorkerShiftTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFA654DF2D3BB7A700A7E86B /* WorkerShiftTimeCell.xib */; };
 		CFA654E12D3BB7A700A7E86B /* WorkerShiftTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA654DE2D3BB7A700A7E86B /* WorkerShiftTimeCell.swift */; };
 		CFA834842CB807E100F1CFFC /* PublishJobVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA834832CB807E000F1CFFC /* PublishJobVC.swift */; };
+		CFB0DC922E9786C70011E340 /* AddRatingReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB0DC912E9786C70011E340 /* AddRatingReviewVC.swift */; };
 		CFB245382CBE69F700CFE16A /* OtpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB245372CBE69F700CFE16A /* OtpVC.swift */; };
 		CFB2453A2CBE6BDE00CFE16A /* WorkerSigningDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB245392CBE6BDE00CFE16A /* WorkerSigningDetailVC.swift */; };
 		CFB340F92CB1211600C6CBB1 /* ClientListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB340F72CB1211600C6CBB1 /* ClientListCell.swift */; };
@@ -428,6 +429,7 @@
 		CFA654DE2D3BB7A700A7E86B /* WorkerShiftTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerShiftTimeCell.swift; sourceTree = "<group>"; };
 		CFA654DF2D3BB7A700A7E86B /* WorkerShiftTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkerShiftTimeCell.xib; sourceTree = "<group>"; };
 		CFA834832CB807E000F1CFFC /* PublishJobVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishJobVC.swift; sourceTree = "<group>"; };
+		CFB0DC912E9786C70011E340 /* AddRatingReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRatingReviewVC.swift; sourceTree = "<group>"; };
 		CFB245372CBE69F700CFE16A /* OtpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVC.swift; sourceTree = "<group>"; };
 		CFB245392CBE6BDE00CFE16A /* WorkerSigningDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerSigningDetailVC.swift; sourceTree = "<group>"; };
 		CFB340F72CB1211600C6CBB1 /* ClientListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientListCell.swift; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 				04DDB9892A16536200AD4FB5 /* EditProfileVC.swift */,
 				CFC4B9832D34F88800452D80 /* SetCustomDateRateVC.swift */,
 				CF1FB3D82E9690260096F91B /* UserRatingVC.swift */,
+				CFB0DC912E9786C70011E340 /* AddRatingReviewVC.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1386,6 +1389,7 @@
 				CFD247882BD15187005270B7 /* PaymentVC.swift in Sources */,
 				047B22BF2A0BC1D700AC3DA7 /* PageViewControllerDelegate.swift in Sources */,
 				04DDB98A2A16536200AD4FB5 /* EditProfileVC.swift in Sources */,
+				CFB0DC922E9786C70011E340 /* AddRatingReviewVC.swift in Sources */,
 				047B229A2A0BC1D600AC3DA7 /* PagingMenuInteraction.swift in Sources */,
 				047B23012A0BC1D700AC3DA7 /* ForgotPasswordVC.swift in Sources */,
 				047B22812A0BC1D600AC3DA7 /* Extensions.swift in Sources */,
@@ -1691,7 +1695,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.74;
+				MARKETING_VERSION = 2.77;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rapidzz.AnyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1738,7 +1742,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.74;
+				MARKETING_VERSION = 2.77;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rapidzz.AnyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

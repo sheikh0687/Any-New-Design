@@ -28,6 +28,12 @@ class BookingCellWorker:UITableViewCell {
     @IBOutlet weak var lbl_Certificate: UILabel!
     @IBOutlet weak var btn_SeeReview: UIButton!
     
+    @IBOutlet weak var btn_GiveRating: UIButton!
+    @IBOutlet weak var view_GiveRating: UIView!
+    @IBOutlet weak var reviewView: UIStackView!
+    @IBOutlet weak var cosmosVw: CosmosView!
+    @IBOutlet weak var lbl_Feedback: UILabel!
+    
     @IBOutlet weak var imgCertificate: UIImageView!
 }
 
